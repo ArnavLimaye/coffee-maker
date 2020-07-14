@@ -33,9 +33,11 @@ namespace CoffeeMaker
             if (AreAllPrerequisitesMet())
             {
                 // logic for brewing
-                if(!_warmerPlate.IsEmpty())
+                _waterStrainer.StartBoiler();
+                if (_coffeeContainer.IsFull())
                 {
-
+                    _waterStrainer.StopBoiler();
+                    _warmerPlate.Start();
                 }
             }
             else
