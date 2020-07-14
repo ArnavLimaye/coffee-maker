@@ -3,6 +3,6 @@ namespace CoffeeMaker
 {
     public interface IStatusChecker
     {
-        public bool IsEmpty();
+        bool IsEmpty();
     }
 }

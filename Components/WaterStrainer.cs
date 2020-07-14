@@ -6,8 +6,12 @@ namespace CoffeeMaker.Components
     internal class WaterStrainer : IStatusChecker
     {
         private Valve _valve;
+        private Boiler _boiler;
+
         public WaterStrainer()
         {
+            _valve = new Valve();
+            _boiler = new Boiler();
         }
 
         public bool IsEmpty()
@@ -15,10 +19,13 @@ namespace CoffeeMaker.Components
             throw new NotImplementedException();
         }
 
-        public bool ShouldStopWaterFlow()
+        public void StopBoiler()
         {
             //call valve's isPressureBelow
-            throw new NotImplementedException();
+            if (_valve.IsPressureBelowThreshold())
+            {
+                _boiler.Stop();
+            }
         }
 
         public bool IsFull()
@@ -26,9 +33,9 @@ namespace CoffeeMaker.Components
             throw new NotImplementedException();
         }
 
-        public void BoilWater()
+        public void StartBoiler()
         {
-            
+            _boiler.Start();
         }
     }
 }

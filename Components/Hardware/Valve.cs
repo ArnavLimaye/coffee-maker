@@ -7,11 +7,12 @@ namespace CoffeeMaker.Components.Hardware
 
         public Valve()
         {
+            _pressureSensor = new PressureSensor();
         }
 
         public bool IsPressureBelowThreshold()
         {
-            throw new NotImplementedException();
+            return _pressureSensor.HasThresholdBeenBreached();
         }
 
         public bool ReducePressure()
